@@ -1,0 +1,59 @@
+<admintpl file="header"/>
+<body>
+<div class="wrap js-check-wrap">
+	<ul class="nav nav-tabs">
+	 <li class="active"><a>添加/删除短信模板</a></li>
+	</ul>
+	<div class="common-form">
+	
+	<p>添加短信模板</p>
+	<form method="post" class="js-ajax-form" action="{:sp_plugin_url('Crplatform://AdminIndex/add_crplatform')}">
+	<div class="js-ajax-form">
+		<p>短信类型：
+			<select name="sms_cat">
+				<option value="">请选择类型</option>
+				<option value="reg_sms">reg_sms--注册成功</option>
+				<option value="login_sms">login_sms--登录成功</option>
+			</select>
+		</p>短信模板：
+			<textarea name="sms_content" placeholder="请输入模板内容" style="width:400px;height:50px"></textarea>
+		<p>
+		</p>
+		<button class="btn btn-primary js-ajax-submit" type="submit">添加模板</button>
+	</div>
+	</form>
+
+
+    <form method="post" class="js-ajax-form" action="#">
+      <div class="table_list">
+	    <table width="100%" class="table table-hover">
+	        <thead>
+	          <tr>
+	            <th width="50">ID</th>
+	            <th>类型</th>
+	            <th>内容</th>
+	            <th>添加时间</th>
+	            <th width="120">操作</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	        	<foreach name="smslist" item="vo">
+	        	<tr>
+		            <td>{$vo.id}</td>
+		            <td>{$vo.sms_cat}</td>
+		            <td>{$vo.sms_content}</td>
+		            <td>{$vo.add_time}</td>
+		            <td>
+			            <a href="{:sp_plugin_url('Crplatform://AdminIndex/delete_crplatform',array('id'=>$vo['id']),true)}" class="js-ajax-delete" >删除</a>
+			        </td>
+	          	</tr>
+	          	</foreach>
+			</tbody>
+	      </table>
+  		</div>
+    </form>
+  </div>
+</div>
+<script src="__PUBLIC__/js/common.js?"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('slidecat/index')}">{:L('ADMIN_SLIDECAT_INDEX')}</a></li>
+			<li><a href="{:U('slidecat/add')}">{:L('ADMIN_SLIDECAT_ADD')}</a></li>
+			<li class="active"><a href="{:U('slidecat/setcatid')}">{:L('ADMIN_SLIDECAT_SETCATID')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('slidecat/edit_otherset')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('ADMIN_SLIDECAT_SETCATID_HOME')}</label>
+					<div class="controls">
+						<!-- <input type="text" name="cat_name"> -->
+						<select name="cat_idname">
+							<foreach name="cat_idnamelist" item="vo">
+								<option value="">{:L('ADMIN_DEAULT_SELECT')}</option>
+								<option value="{$vo['cat_idname']}" <if condition="$check_slide eq $vo['cat_idname'] ">selected="selected"</if> >{$vo['cat_idname']}</option>
+							</foreach>
+						</select>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				
+			</fieldset>
+			<div class="form-actions">
+				<button class="btn btn-primary js-ajax-submit" type="submit">{:L('ADD')}</button>
+				<a class="btn" href="javascript:history.back(-1);">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>
