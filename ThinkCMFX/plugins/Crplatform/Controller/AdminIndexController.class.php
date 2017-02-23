@@ -27,7 +27,11 @@ class AdminIndexController extends PluginController{
 		$plugin_crplatform_model = D("plugins://Crplatform/PluginCrplatform");
 		$smslist = $plugin_crplatform_model->select();
 		$this->assign("smslist",$smslist);
-		
+
+		/* 获取插件配置信息 */
+		// $aaa = M('plugins')->where(array('name'=>'Crplatform'))->getfield('config');
+		// echo "<pre>";
+		// print_r($aaa);die();
 		$this->display(":admin_index");
 	}
 
